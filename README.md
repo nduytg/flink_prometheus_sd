@@ -6,6 +6,8 @@ Introduction
 
 A simple service for discovering Flink cluster on Hadoop Yarn.
 
+Credit to original idea here: https://github.com/eastcirclek/flink-service-discovery
+
 **prometheus-flink-sd** communicates with YARN ResourceManager and Flink JobManager via REST APIs, and communicates with Prometheus via its file-based service discovery mechanism.
 
 ![how it works](./prometheus-flink-sd.png)

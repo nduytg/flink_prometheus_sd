@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus Flink Service Discovery
+
+[Service]
+User=prometheus
+Group=prometheus
+Restart=always
+Type=simple
+ExecStart=/etc/prometheus/prometheus_flink_sd/prometheus_flink_sd \
+        -address yarnapi.test.com:8088 \
+        -poll-interval 30 \
+        -timeout 20 \
+        -folder /etc/prometheus/prometheus_flink_sd/targets/ \
+        -log-file /etc/prometheus/prometheus_flink_sd/flink_sd.log
+        
+[Install]
+WantedBy=multi-user.target

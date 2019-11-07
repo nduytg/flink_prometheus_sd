@@ -8,9 +8,9 @@ A simple service for discovering Flink cluster on Hadoop Yarn.
 
 Credit to original idea here: https://github.com/eastcirclek/flink-service-discovery
 
-**prometheus-flink-sd** communicates with YARN ResourceManager and Flink JobManager via REST APIs, and communicates with Prometheus via its file-based service discovery mechanism.
+**flink-prometheus-sd** communicates with YARN ResourceManager and Flink JobManager via REST APIs, and communicates with Prometheus via its file-based service discovery mechanism.
 
-![how it works](./prometheus-flink-sd.png)
+![how it works](./flink-prometheus-sd.png)
 
 Getting Started
 ---------------
@@ -42,14 +42,18 @@ go run prometheus_flink_sd
         HTTP query timeout in seconds. (default 15)
 ```
 
+### One app mode
+
 Run in **one app mode** will get data of one flink cluster and stop
 
 ```bash
 ./prometheus_flink_sd \
     -address yarnapi.test.com:8088 \
-    -folder /home/duy_nguyen/prometheus-flink-sd/test/ \
+    -folder /home/duy_nguyen/flink-prometheus-sd/test/ \
     -app-id application_1564484083661_84632
 ```
+
+### Service mode
 
 Run in **service mode** will get data of all running flink clusters and keep checking for update every 30 seconds
 
@@ -58,8 +62,8 @@ Run in **service mode** will get data of all running flink clusters and keep che
     -address yarnapi.test.com:8088 \
     -poll-interval 30 \
     -timeout 20 \
-    -folder /home/duy_nguyen/prometheus-flink-sd/targets/ \
-    -log-file /home/duy_nguyen/prometheus-flink-sd/mylog
+    -folder /home/duy_nguyen/flink-prometheus-sd/targets/ \
+    -log-file /home/duy_nguyen/flink-prometheus-sd/mylog
 ```
 
 Result
